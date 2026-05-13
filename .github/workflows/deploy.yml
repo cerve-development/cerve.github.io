@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: '20' # Use a recent LTS version of Node.js
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Build web application
         run: ./gradlew jsBrowserProductionWebpack
 
