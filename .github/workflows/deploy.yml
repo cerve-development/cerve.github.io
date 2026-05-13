@@ -1,0 +1,38 @@
+name: Deploy KMP Web App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or 'master', depending on your default branch name
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17' # Use a Java version compatible with your Kotlin project
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a recent LTS version of Node.js
+
+      - name: Build web application
+        run: ./gradlew jsBrowserProductionWebpack
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/distributions/composeApp # This is the typical output directory for KMP web apps
+          # If you're deploying to a project page (e.g., username.github.io/repository-name),
+          # you might need to specify the base URL in your index.html.
+          # For user/organization pages (e.g., username.github.io), this is usually not needed.
+          # cname: example.com # Uncomment and set your custom domain if you have one
