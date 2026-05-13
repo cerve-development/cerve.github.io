@@ -1,9 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.hunter.hunterWifiConnectAndroid",
-    "sha256_cert_fingerprints":
-    ["77:D8:7C:58:EC:80:1D:8B:48:E8:77:85:CE:A0:50:FC:2B:C6:D1:EB:DA:38:07:45:09:38:8A:63:A5:B9:F0:13"]
-  }
-}]
