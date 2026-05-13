@@ -63,54 +63,54 @@ fun App() {
         }
     }
 }
-
-@Composable
-fun IsoDotsBackground(modifier: Modifier = Modifier) {
-    Canvas(modifier = modifier) {
-        val canvasWidth = size.width
-        val canvasHeight = size.height
-        
-        // Prevent crashes during initial layout when size might be NaN or 0
-        if (canvasWidth <= 0f || canvasHeight <= 0f || canvasWidth.isNaN() || canvasHeight.isNaN()) {
-            return@Canvas
-        }
-
-        val spacing = 48.dp.toPx()
-        if (spacing <= 0f) return@Canvas
-        
-        val dotRadius = 1.5.dp.toPx()
-        val rowHeight = spacing * 0.866f // sqrt(3)/2
-        
-        if (rowHeight <= 0f) return@Canvas
-
-        val rawRows = canvasHeight / rowHeight
-        val rawCols = canvasWidth / spacing
-        
-        if (rawRows.isNaN() || rawCols.isNaN() || rawRows.isInfinite() || rawCols.isInfinite()) {
-            return@Canvas
-        }
-
-        val rows = rawRows.toInt().coerceIn(0, 500) + 2
-        val cols = rawCols.toInt().coerceIn(0, 500) + 2
-
-        val dotColor = TextSecondary.copy(alpha = 0.2f)
-
-        for (row in 0 until rows) {
-            for (col in 0 until cols) {
-                // Stagger every other row
-                val offsetX = if (row % 2 == 1) spacing / 2f else 0f
-                val x = col * spacing + offsetX
-                val y = row * rowHeight
-
-                drawCircle(
-                    color = dotColor,
-                    radius = dotRadius,
-                    center = Offset(x, y)
-                )
-            }
-        }
-    }
-}
+//
+//@Composable
+//fun IsoDotsBackground(modifier: Modifier = Modifier) {
+//    Canvas(modifier = modifier) {
+//        val canvasWidth = size.width
+//        val canvasHeight = size.height
+//
+//        // Prevent crashes during initial layout when size might be NaN or 0
+//        if (canvasWidth <= 0f || canvasHeight <= 0f || canvasWidth.isNaN() || canvasHeight.isNaN()) {
+//            return@Canvas
+//        }
+//
+//        val spacing = 48.dp.toPx()
+//        if (spacing <= 0f) return@Canvas
+//
+//        val dotRadius = 1.5.dp.toPx()
+//        val rowHeight = spacing * 0.866f // sqrt(3)/2
+//
+//        if (rowHeight <= 0f) return@Canvas
+//
+//        val rawRows = canvasHeight / rowHeight
+//        val rawCols = canvasWidth / spacing
+//
+//        if (rawRows.isNaN() || rawCols.isNaN() || rawRows.isInfinite() || rawCols.isInfinite()) {
+//            return@Canvas
+//        }
+//
+//        val rows = rawRows.toInt().coerceIn(0, 500) + 2
+//        val cols = rawCols.toInt().coerceIn(0, 500) + 2
+//
+//        val dotColor = TextSecondary.copy(alpha = 0.2f)
+//
+//        for (row in 0 until rows) {
+//            for (col in 0 until cols) {
+//                // Stagger every other row
+//                val offsetX = if (row % 2 == 1) spacing / 2f else 0f
+//                val x = col * spacing + offsetX
+//                val y = row * rowHeight
+//
+//                drawCircle(
+//                    color = dotColor,
+//                    radius = dotRadius,
+//                    center = Offset(x, y)
+//                )
+//            }
+//        }
+//    }
+//}
 
 @Composable
 fun NavBar() {
