@@ -34,8 +34,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: composeApp/build/dist/composeWebCompatibility/productionExecutable # This is the typical output directory for KMP web apps
-          # If you're deploying to a project page (e.g., username.github.io/repository-name),
-          # you might need to specify the base URL in your index.html.
-          # For user/organization pages (e.g., username.github.io), this is usually not needed.
-          # cname: example.com # Uncomment and set your custom domain if you have one
+          publish_dir: composeApp/build/dist/composeWebCompatibility/productionExecutable
+          cname: cerve.site
